@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "evolve-forms",
+      "default": true
+    }
+  ],
+  "name": "Evolve Forms",
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "58.0"
+}

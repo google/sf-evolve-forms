@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Dynamic Forms - Create Button</masterLabel>
+    <description>This allows for dynamic fields to create a record.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property name="objectApiName" type="String" label="Object API Name" description="Object Api Name"></property>
+            <property name="buttonLabel" type="String" label="Button Label" description="Label of the button (default is 'Submit')"></property>
+            <property name="successMessage" type="String" label="Success Message" description="Message to display when record is created"></property>
+            <property name="redirectToRecordOnCreate" type="Boolean" label="Open New Record on Create?" description="Set to true to redirect to the new record on successful creation"></property>
+            <property name="includeCancelButton" type="Boolean" label="Include Cancel Button?" description="Set to true to also include a cancel button"></property>
+            <property name="pinToBottom" type="Boolean" label="Pin To Bottom?" description="Set to true to pin the button to the bottom of the page"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

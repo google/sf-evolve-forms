@@ -1,0 +1,138 @@
+<!--
+ Copyright 2023 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<template>
+  <template if:true={editMode}>
+    <template if:false={detach}>
+      <div class="bump"></div>
+    </template>
+    <template if:true={showModal}>
+      <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <header class="slds-modal__header">
+            <h2
+              data-id="confirmation-modal-heading"
+              tabindex="0"
+              class="slds-text-heading_medium slds-hyphenate"
+            >
+              Please Confirm
+            </h2>
+          </header>
+          <div
+            class="slds-modal__content slds-p-around_medium"
+            id="modal-content-id-1"
+          >
+            <template if:true={currentWarnings}>
+              <div class="slds-align_absolute-center">
+                <ul class="slds-list_dotted" tabindex="0">
+                  <template for:each={currentWarnings} for:item="warning">
+                    <li key={warning}>{warning}</li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+
+            <template if:true={conflictingFieldsTabData.length}>
+              <p>
+                This record was modified during your edit session. Please select
+                values for conflicting fields.
+              </p>
+              <br />
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 20%">Field</th>
+                    <th style="width: 40%">Your Value</th>
+                    <th style="width: 40%">Saved Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template for:each={conflictingFieldsTabData} for:item="item">
+                    <tr key={item.field}>
+                      <td>{item.label}</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name={item.field}
+                          value={item.yourValue}
+                          style="margin-right: 5px"
+                          onchange={handleConflictOptionChange}
+                          checked
+                        />{item.yourValue}
+                      </td>
+                      <td>
+                        <input
+                          type="radio"
+                          name={item.field}
+                          value={item.savedValue}
+                          style="margin-right: 5px"
+                          onchange={handleConflictOptionChange}
+                        />{item.savedValue}
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </template>
+          </div>
+          <footer class="slds-modal__footer">
+            <button
+              class="slds-button slds-button_neutral"
+              onclick={closeModal}
+              data-id="closeButton"
+              title="Close"
+              aria-label="Close"
+            >
+              Close
+            </button>
+            <button
+              class="slds-button slds-button_brand"
+              title="Save"
+              data-id="confirmButton"
+              onclick={save}
+              aria-label="Save"
+            >
+              Save
+            </button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <div class={footerClass}>
+      <lightning-button
+        variant="neutral"
+        label="Cancel"
+        type="reset"
+        onclick={cancel}
+        class="slds-p-horizontal_small"
+        aria-label="Cancel"
+        role="button"
+      ></lightning-button>
+      <lightning-button
+        icon-name={saveButtonIconName}
+        disabled={saveIsDisabled}
+        variant="brand"
+        label="Save"
+        type="submit"
+        onclick={handleSavePress}
+        class="slds-p-horizontal_small"
+        aria-label="Save"
+        role="button"
+      ></lightning-button>
+    </div>
+  </template>
+</template>

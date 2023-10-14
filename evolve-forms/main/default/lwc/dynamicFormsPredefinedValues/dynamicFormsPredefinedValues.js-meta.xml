@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Dynamic Forms - Predefined Field Values</masterLabel>
+    <description>Add this invisible component to predefine field values directly through configuration or by reading from the URL</description>
+    <targets>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+      <targetConfig targets="lightning__AppPage">
+          <property name="readValuesFromUrl" type="Boolean" label="Set Values from URL?" description="Set to true to set to also read values from the URL query params."></property>
+          <property name="predefinedFieldValues" type="String" label="Predefined Field Values" description="JSON Mapping of API name to predefined value"></property>
+      </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

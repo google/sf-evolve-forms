@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Dynamic Forms - Field Section via FieldSet</masterLabel>
+    <description>This allows to create field section based on fieldset</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="fieldSetApiName" type="String" label="Field Set API Name" required="true" description="Enter the FieldSet API Name whose fields you want to use to create a field section."></property>
+            <property name="numberOfColumns" type="String" label="Number of Columns" datasource="1,2" default="2" description="Select the number of columns for the field section, default is taken as 2."></property>
+            <property name="sectionLabel" type="String" label="Section Label" description="Enter the section label to be shown for field section. If not specified, FieldSet label be taken as default section label."></property>
+            <property name="labelOverrides" type="String" label="Field Label Overrides" description="JSON Mapping of API name to new field label"></property>
+            <property name="helpTextOverrides" type="String" label="Help Text Overrides" description="JSON Mapping of API name to new help text"></property>
+            <property name="boundary" type="Boolean" label="Include Boundary?" description="Set to true to include a box around the field section"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

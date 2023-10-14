@@ -1,0 +1,158 @@
+<!--
+ Copyright 2023 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<template>
+  <div class={boundaryTheme}>
+    <template if:true={fields}>
+      <template if:true={showSpinner}>
+        <lightning-spinner size="small"></lightning-spinner>
+      </template>
+      <c-dynamic-forms-collapsible-section
+        label={sectionLabel}
+        hide-label={hideSectionTitle}
+      >
+        <lightning-layout multiple-rows="true">
+          <template for:each={fields} for:item="field">
+            <lightning-layout-item
+              size={size}
+              key={field.label}
+              padding="horizontal-medium"
+            >
+              <div class="slds-border_bottom fullHeight">
+                <div class="slds-form-element__label slds-p-top_xx-small">
+                  {field.label}
+                </div>
+                <template if:true={field.helpText}>
+                  <lightning-helptext
+                    content={field.helpText}
+                  ></lightning-helptext>
+                </template>
+                <div class="slds-form-element__control">
+                  <div
+                    class="slds-form-slds-form-element__static slds-p-bottom_xx-small slds-hyphenate"
+                  >
+                    <template if:true={field.address}>
+                      <lightning-formatted-address
+                        city={field.address.city}
+                        country={field.address.country}
+                        disabled={field.address.disabled}
+                        latitude={field.address.latitude}
+                        longitude={field.address.longitude}
+                        postal-code={field.address.postalCode}
+                        province={field.address.province}
+                        show-static-map={field.address.showStaticMap}
+                        street={field.address.street}
+                      >
+                      </lightning-formatted-address>
+                    </template>
+
+                    <template if:true={field.isBoolean}>
+                      <div class="slds-checkbox">
+                        <input type="checkbox" checked={field.booleanValue} />
+                        <span class="slds-checkbox_faux"></span>
+                      </div>
+                    </template>
+
+                    <template if:true={field.dateTimeValue}
+                      ><lightning-formatted-date-time
+                        day={field.dateTimeValue.day}
+                        era={field.dateTimeValue.era}
+                        hour={field.dateTimeValue.hour}
+                        hour12={field.dateTimeValue.hour12}
+                        minute={field.dateTimeValue.minute}
+                        month={field.dateTimeValue.month}
+                        second={field.dateTimeValue.second}
+                        time-zone={field.dateTimeValue.timeZone}
+                        time-zone-name={field.dateTimeValue.timeZoneName}
+                        value={field.dateTimeValue.value}
+                        weekday={field.dateTimeValue.weekday}
+                        year={field.dateTimeValue.year}
+                      >
+                      </lightning-formatted-date-time>
+                    </template>
+
+                    <template if:true={field.text}>
+                      <template if:false={field.text.isRich}>
+                        <lightning-formatted-text
+                          linkify={field.text.linkify}
+                          value={field.text.value}
+                        >
+                        </lightning-formatted-text>
+                      </template>
+                      <template if:true={field.text.isRich}>
+                        <lightning-formatted-rich-text
+                          linkify={field.text.linkify}
+                          value={field.text.value}
+                        ></lightning-formatted-rich-text>
+                      </template>
+                    </template>
+
+                    <template if:true={field.url}>
+                      <lightning-formatted-url
+                        target={field.url.target}
+                        tooltip={field.url.toolTip}
+                        value={field.url.value}
+                        tab-index={field.url.tabIndex}
+                        label={field.url.label}
+                      >
+                      </lightning-formatted-url>
+                    </template>
+                    <template if:true={field.phoneNumber}>
+                      <lightning-formatted-phone
+                        disabled={field.phoneNumber.disabled}
+                        value={field.phoneNumber.value}
+                      >
+                      </lightning-formatted-phone>
+                    </template>
+                    <template if:true={field.numberValue}>
+                      <lightning-formatted-number
+                        currency-code={field.numberValue.currencyCode}
+                        currency-display-as={field.numberValue.currencyDisplayAs}
+                        format-style={field.numberValue.formatStyle}
+                        maximum-fraction-digits={field.numberValue.maximumFractionDigits}
+                        maximum-significant-digits={field.numberValue.maximumSignificantDigits}
+                        minimum-fraction-digits={field.numberValue.minimumFractionDigits}
+                        minimum-integer-digits={field.numberValue.minimumIntegerDigits}
+                        minimum-significant-digits={field.numberValue.minimumSignificantDigits}
+                        value={field.numberValue.value}
+                      >
+                      </lightning-formatted-number>
+                    </template>
+                    <template if:true={field.location}>
+                      <lightning-formatted-location
+                        latitude={field.location.latitude}
+                        longitude={field.location.longitude}
+                      >
+                      </lightning-formatted-location>
+                    </template>
+                    <template if:true={field.email}>
+                      <lightning-formatted-email
+                        hide-icon={field.email.hideIcon}
+                        label={field.email.label}
+                        value={field.email.value}
+                      >
+                      </lightning-formatted-email>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </lightning-layout-item>
+          </template>
+        </lightning-layout>
+      </c-dynamic-forms-collapsible-section>
+    </template>
+  </div>
+</template>

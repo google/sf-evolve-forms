@@ -1,0 +1,89 @@
+<!--
+ Copyright 2023 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<template>
+  <template if:false={hideComponent}>
+    <template if:true={sectionIcon}>
+      <lightning-card icon-name={sectionIcon}>
+        <a slot="title" class="slds-card__header-link" onclick={openRecord}>
+          {sectionLabel}
+        </a>
+        <template if:true={errorMessage}>
+          <div
+            class="infoMessage slds-align--absolute-center slds-var-m-bottom_medium"
+          >
+            {errorMessage}
+          </div>
+        </template>
+        <template if:true={shouldRenderSection}>
+          <c-dynamic-forms-field-section
+            record-id={relatedRecordId}
+            object-api-name={relatedRecordObjectApiName}
+            group-override={relatedRecordGroup}
+            field-api-names={fieldApiNames}
+            columns={columns}
+            read-only-mode={readOnlyMode}
+            hide-edit-highlighting={hideEditHighlighting}
+            start-in-edit-mode={startInEditMode}
+            label-overrides={labelOverrides}
+            help-text-overrides={helpTextOverrides}
+            hide-section-label-on-edit
+            hide-section-label-on-view
+          ></c-dynamic-forms-field-section>
+          <c-dynamic-forms-save-cancel
+            record-id={relatedRecordId}
+            object-api-name={relatedRecordObjectApiName}
+            group-override={relatedRecordGroup}
+            detach
+          ></c-dynamic-forms-save-cancel>
+        </template>
+      </lightning-card>
+    </template>
+    <template if:false={sectionIcon}>
+      <template if:true={errorMessage}>
+        <div
+          class="infoMessage slds-align--absolute-center slds-var-m-bottom_medium"
+        >
+          {errorMessage}
+        </div>
+      </template>
+      <template if:true={shouldRenderSection}>
+        <c-dynamic-forms-field-section
+          record-id={relatedRecordId}
+          object-api-name={relatedRecordObjectApiName}
+          group-override={relatedRecordGroup}
+          section-label={sectionLabel}
+          boundary={boundary}
+          field-api-names={fieldApiNames}
+          columns={columns}
+          read-only-mode={readOnlyMode}
+          hide-edit-highlighting={hideEditHighlighting}
+          start-in-edit-mode={startInEditMode}
+          label-overrides={labelOverrides}
+          help-text-overrides={helpTextOverrides}
+          hide-section-label-on-edit={hideSectionLabelOnEdit}
+          hide-section-label-on-view={hideSectionLabelOnView}
+        ></c-dynamic-forms-field-section>
+        <c-dynamic-forms-save-cancel
+          record-id={relatedRecordId}
+          object-api-name={relatedRecordObjectApiName}
+          group-override={relatedRecordGroup}
+          detach
+        ></c-dynamic-forms-save-cancel>
+      </template>
+    </template>
+  </template>
+</template>

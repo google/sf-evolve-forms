@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flow_API_Name__c</fullName>
+    <description>Enter the API name of a Flow which will be used to evaluate this warning. The flow must have an input variable called &quot;record&quot; of type sObject record and an output variable called &quot;errorMessage&quot; of type string.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Enter the API name of a Flow which will be used to evaluate this warning. The flow must have an input variable called &quot;record&quot; of type sObject record and an output variable called &quot;errorMessage&quot; of type string.</inlineHelpText>
+    <label>Flow API Name</label>
+    <length>255</length>
+    <required>true</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

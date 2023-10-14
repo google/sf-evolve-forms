@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Dynamic Forms - Field Section</masterLabel>
+    <description>This allows for dynamic fields rendered as a field section.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="sectionLabel" type="String" label="Section Label" description="Enter the label of this section"></property>
+            <property name="hideSectionLabelOnView" type="Boolean" label="Hide Section Label on View?" description="Set to true to hide the section label when in view mode."></property>
+            <property name="readOnlyMode" type="Boolean" label="Set Fields in Read Only mode?" description="Set to true to hide the edit pencil icon when in read only mode."></property>
+            <property name="hideSectionLabelOnEdit" type="Boolean" label="Hide Section Label on Edit?" description="Set to true to hide the section label when in edit mode."></property>
+            <property name="hideEditHighlighting" type="Boolean" label="Disable Edit Highlights?" description="Set to true to disable highlighting fields that have changed values."></property>
+            <property name="startInEditMode" type="Boolean" label="Start in Edit Mode?" description="Set to true to set the section to edit mode on load."></property>
+            <property name="fieldApiNames" type="String" label="Comma Separated Field API Names" description="Enter API names of the fields you would like to use in this layout section. Prepend with '*' to mark as required. Append with '*' to mark as read-only. Insert an extra comma to insert a blank space"></property>
+            <property name="columns" type="String" label="Number of Columns" description="Enter the number of columns for this section" datasource="1,2"></property>
+            <property name="boundary" type="Boolean" label="Include Boundary?" description="Set to true to include a box around the field section"></property>
+            <property name="labelOverrides" type="String" label="Field Label Overrides" description="JSON Mapping of API name to new field label"></property>
+            <property name="helpTextOverrides" type="String" label="Help Text Overrides" description="JSON Mapping of API name to new help text"></property>
+        </targetConfig>
+        <targetConfig targets="lightning__AppPage,lightningCommunity__Default">
+            <property name="recordId" type="String" label="Record Id" description="Automatically bind the page's record id to the component variable" default="{!recordId}" />
+            <property name="objectApiName" type="String" label="Object API Name" description="Object Api Name"></property>
+            <property name="sectionLabel" type="String" label="Section Label" description="Enter the label of this section"></property>
+            <property name="hideSectionLabelOnView" type="Boolean" label="Hide Section Label on View?" description="Set to true to hide the section label when in view mode."></property>
+            <property name="readOnlyMode" type="Boolean" label="Set Fields in Read Only mode?" description="Set to true to hide the edit pencil icon when in read only mode."></property>
+            <property name="hideSectionLabelOnEdit" type="Boolean" label="Hide Section Label on Edit?" description="Set to true to hide the section label when in edit mode."></property>
+            <property name="hideEditHighlighting" type="Boolean" label="Disable Edit Highlights?" description="Set to true to disable highlighting fields that have changed values."></property>
+            <property name="startInEditMode" type="Boolean" label="Start in Edit Mode?" description="Set to true to set the section to edit mode on load."></property>
+            <property name="fieldApiNames" type="String" label="Comma Separated Field API Names" description="Enter API names of the fields you would like to use in this layout section. Prepend with '*' to mark as required. Append with '*' to mark as read-only. Insert an extra comma to insert a blank space"></property>
+            <property name="columns" type="String" label="Number of Columns" description="Enter the number of columns for this section" datasource="1,2"></property>
+            <property name="boundary" type="Boolean" label="Include Boundary?" description="Set to true to include a box around the field section"></property>
+            <property name="labelOverrides" type="String" label="Field Label Overrides" description="JSON Mapping of API name to new field label"></property>
+            <property name="helpTextOverrides" type="String" label="Help Text Overrides" description="JSON Mapping of API name to new help text"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Dynamic Forms Message Channel</masterLabel>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <fieldName>fieldApiName</fieldName>
+        <description>API name of the field whose values have been updated</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>newValue</fieldName>
+        <description>New value of the updated field</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>eventType</fieldName>
+        <description>Type of the event to be communicated across the page</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>group</fieldName>
+        <description>Used to group the field sections and save/cancel buttons together. RecordId is used for record updates; UUId can be used for inserts.</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

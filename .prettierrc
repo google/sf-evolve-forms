@@ -1,0 +1,14 @@
+{
+  "trailingComma": "none",
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "**/lwc/**/*.html",
+      "options": { "parser": "lwc" }
+    },
+    {
+      "files": "*.{cmp,page,component,email,auradoc,design}",
+      "options": { "parser": "html", "htmlWhitespaceSensitivity": "ignore" }
+    }
+  ]
+}

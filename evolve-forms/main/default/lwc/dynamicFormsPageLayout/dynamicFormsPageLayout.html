@@ -1,0 +1,34 @@
+<!--
+ Copyright 2023 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<template>
+  <template for:each={layoutSections} for:item="section">
+    <c-dynamic-forms-field-section
+      key={section.sectionLabel}
+      record-id={recordId}
+      object-api-name={objectApiName}
+      section-label={section.sectionLabel}
+      field-api-names={section.apiNamesCsv}
+      columns={section.numberOfColumns}
+      hide-section-label-on-view={section.hideSectionLabelOnView}
+      hide-section-label-on-edit={section.hideSectionLabelOnEdit}
+      label-overrides={labelOverrides}
+      help-text-overrides={helpTextOverrides}
+      start-in-edit-mode={startInEditMode}
+    >
+    </c-dynamic-forms-field-section>
+  </template>
+</template>

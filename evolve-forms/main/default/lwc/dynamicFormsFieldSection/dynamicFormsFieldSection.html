@@ -1,0 +1,207 @@
+<!--
+ Copyright 2023 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<template>
+  <div class={boundaryTheme}>
+    <template if:true={shouldRenderSection}>
+      <lightning-record-edit-form
+        record-id={recordId}
+        object-api-name={objectApiName}
+        onerror={handleError}
+        onsuccess={handleSuccess}
+      >
+        <lightning-record-view-form
+          record-id={recordId}
+          object-api-name={objectApiName}
+        >
+          <template if:true={showSpinner}>
+            <lightning-spinner size="small"></lightning-spinner>
+          </template>
+          <c-dynamic-forms-collapsible-section
+            label={sectionLabel}
+            hide-label={hideSectionTitle}
+          >
+            <lightning-layout multiple-rows="true">
+              <template for:each={sectionElements} for:item="element">
+                <lightning-layout-item
+                  data-id={element.fieldApiName}
+                  size={columnSize}
+                  key={element.key}
+                  padding="horizontal-small"
+                >
+                  <template if:true={element.isSpace}>
+                    <div class="slds-form__item slds-no-space blankSpace"></div>
+                  </template>
+                  <template if:false={element.isSpace}>
+                    <template if:true={editMode}>
+                      <template if:true={element.labelOverride}>
+                        <ul class="slds-form-element__label">
+                          <li class="slds-item">{element.labelOverride}</li>
+                        </ul>
+                        <template if:true={element.helpText}>
+                          <lightning-helptext
+                            content={element.helpText}
+                          ></lightning-helptext>
+                        </template>
+                      </template>
+                      <div class={element.labelVariant}>
+                        <lightning-input-field
+                          field-name={element.fieldApiName}
+                          required={element.required}
+                          onchange={handleFieldChange}
+                          onfocusin={handleFocusIn}
+                          onfocusout={handleFocusOut}
+                          data-field-api-name={element.fieldApiName}
+                          variant={element.labelVariant}
+                          value={element.value}
+                          disabled={element.readOnly}
+                        >
+                        </lightning-input-field>
+                      </div>
+                    </template>
+                    <template if:false={editMode}>
+                      <lightning-layout
+                        vertical-align="center"
+                        class="slds-border_bottom"
+                        onmouseover={hoverOverField}
+                        onmouseout={hoverOffField}
+                        data-field-api-name={element.fieldApiName}
+                      >
+                        <lightning-layout-item flexibility="auto">
+                          <template if:false={element.isReference}>
+                            <div
+                              class="slds-form-element slds-form-element_stacked"
+                            >
+                              <template if:true={element.labelOverride}>
+                                <ul class="slds-form-element__label">
+                                  <li class="slds-item">
+                                    {element.labelOverride}
+                                  </li>
+                                </ul>
+                                <template if:true={element.helpText}>
+                                  <lightning-helptext
+                                    content={element.helpText}
+                                  ></lightning-helptext>
+                                </template>
+                              </template>
+                              <lightning-output-field
+                                field-name={element.fieldApiName}
+                                variant={element.labelVariant}
+                              >
+                              </lightning-output-field>
+                            </div>
+                          </template>
+                          <!-- Mimic the look of an output field for reference values-->
+                          <!-- This is due to page layout dependencies on lookup fields -->
+                          <!-- See https://help.salesforce.com/s/articleView?id=000349125&type=1 -->
+                          <template if:true={element.isReference}>
+                            <div
+                              class="slds-form-element slds-form-element_stacked"
+                            >
+                              <ul class="slds-form-element__label">
+                                <li class="slds-item">
+                                  <template if:true={element.labelOverride}>
+                                    {element.labelOverride}
+                                  </template>
+                                  <template if:false={element.labelOverride}>
+                                    {element.fieldLabel}
+                                  </template>
+                                </li>
+                              </ul>
+                              <template if:true={element.helpText}>
+                                <lightning-helptext
+                                  content={element.helpText}
+                                ></lightning-helptext>
+                              </template>
+                              <div
+                                class="slds-form-element__control lookupFieldValueContainer"
+                              >
+                                <template if:true={element.referenceName}>
+                                  <a
+                                    class="slds-form-element__static lookupField"
+                                    data-record-id={element.referenceValue}
+                                    onclick={navigateToReference}
+                                    onmouseover={hoverOverLookupField}
+                                    onmouseleave={hoverOffLookupField}
+                                    onkeydown={handleLookupKeyPress}
+                                    data-field-api-name={element.fieldApiName}
+                                    tabindex="0"
+                                  >
+                                    {element.referenceName}
+
+                                    <template
+                                      if:true={element.showLookupCompactLayout}
+                                    >
+                                      <div
+                                        onmouseover={hoverOverCompactLayout}
+                                        onmouseleave={hoverOffCompactLayout}
+                                        data-field-api-name={element.fieldApiName}
+                                      >
+                                        <c-dynamic-forms-compact-page-layout
+                                          lookup-record-id={element.referenceValue}
+                                          lookup-object-api-name={element.referenceObject}
+                                          lookup-field-value={element.referenceName}
+                                        >
+                                        </c-dynamic-forms-compact-page-layout>
+                                      </div>
+                                    </template>
+                                  </a>
+                                  <template if:true={element.isSystemField}>
+                                    <span class="systemDateTime"
+                                      >, {element.systemDateValue}</span
+                                    >
+                                  </template>
+                                </template>
+                              </div>
+                            </div>
+                          </template>
+                        </lightning-layout-item>
+                        <lightning-layout-item
+                          flexibility="no-shrink"
+                          class={renderPencilIcon}
+                        >
+                          <div class="slds-float_right">
+                            <div onclick={setEditMode} class="pencilIconClass">
+                              <lightning-icon
+                                class={element.editButtonClassName}
+                                icon-name="utility:edit"
+                                size="xx-small"
+                                aria-label={element.ariaLabel}
+                                alternative-text={element.ariaLabel}
+                                title={element.ariaLabel}
+                                tabindex="0"
+                                role="button"
+                                onkeydown={handlePencilKeyPress}
+                                data-field-api-name={element.fieldApiName}
+                              ></lightning-icon>
+                            </div>
+                          </div>
+                        </lightning-layout-item>
+                      </lightning-layout>
+                    </template>
+                  </template>
+                </lightning-layout-item>
+              </template>
+            </lightning-layout>
+          </c-dynamic-forms-collapsible-section>
+        </lightning-record-view-form>
+      </lightning-record-edit-form>
+    </template>
+    <template if:true={error}>
+      <p>error</p>
+    </template>
+  </div>
+</template>

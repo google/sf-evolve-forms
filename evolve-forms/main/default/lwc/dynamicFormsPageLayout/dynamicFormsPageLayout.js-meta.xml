@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Dynamic Forms - Page Layout</masterLabel>
+    <description>This allows for a fully rendered Page Layout from LWC</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="pageLayoutName" type="String" label="Page Layout Name" description="Enter the name of the page layout to be rendered. If left blank, the name will be fetched using Case_Behavior__mdt."></property>
+            <property name="labelOverrides" type="String" label="Field Label Overrides" description="JSON Mapping of API name to new field label"></property>
+            <property name="helpTextOverrides" type="String" label="Help Text Overrides" description="JSON Mapping of API name to new help text"></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
