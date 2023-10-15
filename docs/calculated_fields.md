@@ -38,7 +38,7 @@ To define a flow-based renderer, create an autolaunched flow with the following 
 | Variable Name | Variable Type | Available for Input | Available for Output | Description |
 | --- | --- | --- | --- | --- |
 | `recordId` | text | yes | no | The Id of the record | 
-| `calculatedFields` | Collection of [`CalculatedField`](evolve-forms/main/default/classes/CalculatedField.cls) | no | yes  | The calculated fields to be rendered on the screen |
+| `calculatedFields` | Collection of [`CalculatedField`](/evolve-forms/main/default/classes/CalculatedField.cls) | no | yes  | The calculated fields to be rendered on the screen |
 
 ![Flow Renderer Outline](images/FlowRendererOutline.png)
 

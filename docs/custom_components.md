@@ -115,7 +115,7 @@ export default class SliderDemo extends DynamicFormsElement {
 ## Event Details
 
 Here are the supported
-[event types](evolve-forms/main/default/lwc/dynamicFormsElement/dynamicFormsElement.js)
+[event types](/evolve-forms/main/default/lwc/dynamicFormsElement/dynamicFormsElement.js)
 which Evolve Forms uses to facilitate all interactions. Use these when building
 custom components that interact with the rest of the Evolve Forms Page Layout and
 Field Section components on the page.
@@ -125,11 +125,11 @@ Field Section components on the page.
 | --- | --- | 
 | CANCEL                   | Broadcast that the form should cancel the current form modifications |
 | CHECK_EDIT               | Check if the form is currently in edit mode                          |
-| CHECK_OVERRIDES          | Check if any form values should be                                   | overridden by a pre-populated value |
+| CHECK_OVERRIDES          | Check if any form values should be overridden by a pre-populated value |
 | EDIT                     | Broadcast that the form should switch to edit mode                   |
 | FOCUS_IN                 | Broadcast that an input element got focus                            |
 | FOCUS_OUT                | Broadcast that an input element focused out                          |
-| NO_LONGER_REQUIRED_FIELD | Broadcast to remove required                                         | field which is no longer required   |
+| NO_LONGER_REQUIRED_FIELD | Broadcast to remove requirement from a field which is no longer required   |
 | REQUIRED_FIELD           | Broadcast that this element contains a required field                |
 | RESET                    | Broadcast to reset current form fields                               |
 | SAVE_END                 | Broadcast that the form has finished saving                          | (successful or not)                 |
