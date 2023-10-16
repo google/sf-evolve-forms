@@ -98,10 +98,10 @@ To enable these warnings, create a row of Custom Metadata in the
 
 ![Conditional Warning Metadata](images/ConditionalWarningMetadata.png)
 
-| Field                 | Type      | Description                                                                                                                                                                                                  |
-| --------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| SObject_API_Name\_\_c | Text(255) | API name of the sObject that this conditional warning will be rendered on                                                                                                                                    |
-| Flow_API_Name\_\_c    | Text(255) | The API name of a Flow which will be used to evaluate this warning. The flow must have an input variable called `record` of type sObject record and an output variable called `errorMessage` of type string. If `errorMessage` has a value, then that value will be rendered as a warning to the user. |
+| Field                 | Type      | Description                                                                                                                                                                                                                                                                                                |
+| --------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SObject_API_Name\_\_c | Text(255) | API name of the sObject that this conditional warning will be rendered on                                                                                                                                                                                                                                  |
+| Flow_API_Name\_\_c    | Text(255) | The API name of a Flow which will be used to evaluate this warning. The flow must have an input variable called `record` of type sObject record and an output variable called `warningMessage` of type string. If `warningMessage` has a value, then that value will be rendered as a warning to the user. |
 
 #### Digital Experience Support
 

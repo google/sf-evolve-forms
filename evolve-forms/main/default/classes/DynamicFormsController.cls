@@ -26,8 +26,6 @@ public with sharing class DynamicFormsController {
   private static final String CREATED_DATE = 'CreatedDate';
   private static final String DATE_STRING = 'Date';
   private static final String DATE_TIME_STRING = 'DateTime';
-  @TestVisible
-  private static final String ERROR_MESSAGE = 'errorMessage';
   private static final String ESCAPED_PERIOD = '\\.';
   private static final String ESCAPED_QUOTE = '\'';
   private static final String GET = 'GET';
@@ -43,6 +41,8 @@ public with sharing class DynamicFormsController {
   private static final String RECORD_VARIABLE = 'record';
   private static final String STRATEGY_NEWEST = 'Newest';
   private static final String STRATEGY_OLDEST = 'Oldest';
+  @TestVisible
+  private static final String WARNING_MESSAGE = 'warningMessage';
 
   private static final String[] EXPECTED_NAME_VALUES = new List<String>{
     NAME, // Most all objects
@@ -97,7 +97,7 @@ public with sharing class DynamicFormsController {
 
   /**
    * @description - Invokes the flow with the specified API name and returns the value
-   * of the `errorMessage` output variable.
+   * of the `warningMessage` output variable.
    * @param record - The state of the current record including all field values
    * from the database as well as the current pending edits.
    * @param flowApiName - the flow to be invoked.
@@ -124,7 +124,7 @@ public with sharing class DynamicFormsController {
       auraException.setMessage(message);
       throw auraException;
     }
-    return (String) flowInterview.getVariableValue(ERROR_MESSAGE);
+    return (String) flowInterview.getVariableValue(WARNING_MESSAGE);
   }
 
   /**

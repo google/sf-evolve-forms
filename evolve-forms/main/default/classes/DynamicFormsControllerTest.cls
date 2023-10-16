@@ -661,15 +661,15 @@ private with sharing class DynamicFormsControllerTest {
 
   @IsTest
   private static void evaluateConditionalWarningShouldWorkIfEverythingIsConfiguredProperly() {
-    String errorMessage = 'Something is not correct';
+    String warningMessage = 'Something is not correct';
     DynamicFormsController.flowInterview = new DynamicFormsControllerTest.FakeInterview(
       new Map<String, Object>{
-        DynamicFormsController.ERROR_MESSAGE => errorMessage
+        DynamicFormsController.WARNING_MESSAGE => warningMessage
       }
     );
 
     System.assertEquals(
-      errorMessage,
+      warningMessage,
       DynamicFormsController.evaluateConditionalWarning(
         new Account(),
         'Bogus_Flow_API_Name'
