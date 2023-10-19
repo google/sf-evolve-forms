@@ -16,9 +16,9 @@ jobs:
           ref: ${{ github.ref }}
           fetch-depth: 0
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: ">=14"
+          node-version: ">=18"
           check-latest: true
 
       - name: Install Salesforce CLI + Scanner
