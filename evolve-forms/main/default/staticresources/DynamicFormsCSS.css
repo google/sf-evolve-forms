@@ -16,7 +16,7 @@
 
 /**
  *  Unfortunately, despite marking a label as hidden when using a Salesforce input-field,
- *  the help-text is still rendered: https://screenshot.googleplex.com/9GSNoNFxcmTKj4Q
+ *  the help-text is still rendered.
  *  This CSS injection force hides this help text from rendering.
  */
 c-dynamic-forms-field-section
