@@ -96,7 +96,7 @@ export default class SliderDemo extends DynamicFormsElement {
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>59.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>Slider Demonstration</masterLabel>
     <description>This enables the value of a slider to be saved to a number field.</description>
