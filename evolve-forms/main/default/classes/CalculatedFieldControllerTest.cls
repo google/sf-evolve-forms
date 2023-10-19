@@ -31,7 +31,7 @@ private class CalculatedFieldControllerTest {
 
   static {
     CalculatedField c1 = new CalculatedField();
-    lightningFormattedText text = new lightningFormattedText();
+    LightningFormattedText text = new LightningFormattedText();
     text.isRich = false;
     text.linkify = false;
     text.value = 'Value 1';
@@ -39,7 +39,7 @@ private class CalculatedFieldControllerTest {
     c1.label = 'Field 1';
 
     CalculatedField c2 = new CalculatedField();
-    lightningFormattedName text2 = new lightningFormattedName();
+    LightningFormattedName text2 = new LightningFormattedName();
     text2.firstName = 'John';
     text2.middleName = 'Middleton';
     text2.lastName = 'Doe';
@@ -51,7 +51,7 @@ private class CalculatedFieldControllerTest {
     c2.label = 'Field 2';
 
     CalculatedField c3 = new CalculatedField();
-    lightningFormattedText text3 = new lightningFormattedText();
+    LightningFormattedText text3 = new LightningFormattedText();
     text3.isRich = false;
     text3.linkify = true;
     text3.value = 'Value 3';
@@ -59,7 +59,7 @@ private class CalculatedFieldControllerTest {
     c3.label = 'Field 3';
 
     CalculatedField c4 = new CalculatedField();
-    lightningFormattedText text4 = new lightningFormattedText();
+    LightningFormattedText text4 = new LightningFormattedText();
     text4.isRich = true;
     text4.linkify = false;
     text4.value = '<h2>Default <s>Value</s></h2>';
@@ -67,22 +67,23 @@ private class CalculatedFieldControllerTest {
     c4.label = 'Field 4';
 
     CalculatedField c5 = new CalculatedField();
-    lightningFormattedUrl url1 = new lightningFormattedUrl();
-    url1.tooltip = 'Use full domain name';
-    url1.value = 'www.salesforce.com';
+    LightningFormattedUrl url1 = new LightningFormattedUrl();
+    url1.value = 'https://salesforce.com';
+    url1.tooltip = 'Use https://domain-name';
+    url1.label = 'Visit salesforce.com';
     url1.target = '_blank';
     c5.url = url1;
     c5.label = 'Field 5';
 
     CalculatedField c6 = new CalculatedField();
-    lightningFormattedPhoneNumber phone1 = new lightningFormattedPhoneNumber();
+    LightningFormattedPhoneNumber phone1 = new LightningFormattedPhoneNumber();
     phone1.value = '8005551212';
     phone1.disabled = false;
     c6.phoneNumber = phone1;
     c6.label = 'Field 6';
 
     CalculatedField c7 = new CalculatedField();
-    lightningFormattedNumber number1 = new lightningFormattedNumber();
+    LightningFormattedNumber number1 = new LightningFormattedNumber();
     number1.value = 1234.5678;
     number1.formatStyle = 'currency';
     number1.currencyCode = 'INR';
@@ -96,14 +97,14 @@ private class CalculatedFieldControllerTest {
     c7.label = 'Field 7';
 
     CalculatedField c8 = new CalculatedField();
-    lightningFormattedlocation loc1 = new lightningFormattedlocation();
+    LightningFormattedLocation loc1 = new LightningFormattedLocation();
     loc1.latitude = 22;
     loc1.longitude = 122.2222;
     c8.location = loc1;
     c8.label = 'Field 8';
 
     CalculatedField c9 = new CalculatedField();
-    lightningFormattedEmail email1 = new lightningFormattedEmail();
+    LightningFormattedEmail email1 = new LightningFormattedEmail();
     email1.hideIcon = false;
     email1.label = 'Email Us!';
     email1.value = 'email@example.com';
@@ -111,7 +112,7 @@ private class CalculatedFieldControllerTest {
     c9.label = 'Field 9';
 
     CalculatedField c10 = new CalculatedField();
-    lightningFormattedDateTime dateTime1 = new lightningFormattedDateTime();
+    LightningFormattedDateTime dateTime1 = new LightningFormattedDateTime();
     dateTime1.weekday = 'long';
     dateTime1.day = '2-digit';
     dateTime1.month = 'short';
@@ -128,16 +129,25 @@ private class CalculatedFieldControllerTest {
     c10.label = 'Field 10';
 
     CalculatedField c11 = new CalculatedField();
-    lightningFormattedAddress address1 = new lightningFormattedAddress();
+    LightningFormattedAddress address1 = new LightningFormattedAddress();
     address1.street = '121 Spear St.';
     address1.city = 'San Francisco';
     address1.country = 'US';
     address1.province = 'CA';
     address1.postalCode = '94105';
+    address1.latitude = 37.792179;
+    address1.locale = 'en-US';
+    address1.longitude = -122.392735;
     address1.showStaticMap = false;
     address1.disabled = false;
     c11.address = address1;
     c11.label = 'Field 11';
+
+    CalculatedField c12 = new CalculatedField();
+    LightningFormattedTime time1 = new LightningFormattedTime();
+    time1.value = '22:12:30.999';
+    c12.timeValue = time1;
+    c12.label = 'Field 12';
 
     fields.add(c1);
     fields.add(c2);
@@ -150,6 +160,7 @@ private class CalculatedFieldControllerTest {
     fields.add(c9);
     fields.add(c10);
     fields.add(c11);
+    fields.add(c12);
   }
 
   @IsTest

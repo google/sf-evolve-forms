@@ -41,16 +41,13 @@ public class CalculatedField {
   public LightningFormattedPhoneNumber phoneNumber { get; set; }
 
   @AuraEnabled
-  public LightningFormattedUrl url { get; set; }
-
-  @AuraEnabled
   public LightningFormattedText text { get; set; }
 
   @AuraEnabled
-  public String helpText { get; set; }
+  public LightningFormattedTime timeValue { get; set; }
 
   @AuraEnabled
-  public String label { get; set; }
+  public LightningFormattedUrl url { get; set; }
 
   @AuraEnabled
   public Boolean booleanValue { get; set; }
@@ -62,4 +59,10 @@ public class CalculatedField {
     }
     private set;
   }
+
+  @AuraEnabled
+  public String helpText { get; set; }
+
+  @AuraEnabled
+  public String label { get; set; }
 }

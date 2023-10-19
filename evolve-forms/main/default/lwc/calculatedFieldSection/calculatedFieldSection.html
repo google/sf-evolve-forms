@@ -50,6 +50,7 @@
                         country={field.address.country}
                         disabled={field.address.disabled}
                         latitude={field.address.latitude}
+                        locale={field.address.locale}
                         longitude={field.address.longitude}
                         postal-code={field.address.postalCode}
                         province={field.address.province}
@@ -58,14 +59,6 @@
                       >
                       </lightning-formatted-address>
                     </template>
-
-                    <template if:true={field.isBoolean}>
-                      <div class="slds-checkbox">
-                        <input type="checkbox" checked={field.booleanValue} />
-                        <span class="slds-checkbox_faux"></span>
-                      </div>
-                    </template>
-
                     <template if:true={field.dateTimeValue}
                       ><lightning-formatted-date-time
                         day={field.dateTimeValue.day}
@@ -83,39 +76,33 @@
                       >
                       </lightning-formatted-date-time>
                     </template>
-
-                    <template if:true={field.text}>
-                      <template if:false={field.text.isRich}>
-                        <lightning-formatted-text
-                          linkify={field.text.linkify}
-                          value={field.text.value}
-                        >
-                        </lightning-formatted-text>
-                      </template>
-                      <template if:true={field.text.isRich}>
-                        <lightning-formatted-rich-text
-                          linkify={field.text.linkify}
-                          value={field.text.value}
-                        ></lightning-formatted-rich-text>
-                      </template>
-                    </template>
-
-                    <template if:true={field.url}>
-                      <lightning-formatted-url
-                        target={field.url.target}
-                        tooltip={field.url.toolTip}
-                        value={field.url.value}
-                        tab-index={field.url.tabIndex}
-                        label={field.url.label}
+                    <template if:true={field.email}>
+                      <lightning-formatted-email
+                        hide-icon={field.email.hideIcon}
+                        label={field.email.label}
+                        tab-index={field.email.tabIndex}
+                        value={field.email.value}
                       >
-                      </lightning-formatted-url>
+                      </lightning-formatted-email>
                     </template>
-                    <template if:true={field.phoneNumber}>
-                      <lightning-formatted-phone
-                        disabled={field.phoneNumber.disabled}
-                        value={field.phoneNumber.value}
+                    <template if:true={field.location}>
+                      <lightning-formatted-location
+                        latitude={field.location.latitude}
+                        longitude={field.location.longitude}
                       >
-                      </lightning-formatted-phone>
+                      </lightning-formatted-location>
+                    </template>
+                    <template if:true={field.name}>
+                      <lightning-formatted-name
+                        first-name={field.name.firstName}
+                        format={field.name.format}
+                        informal-name={field.name.informalName}
+                        last-name={field.name.lastName}
+                        middle-name={field.name.middleName}
+                        salutation={field.name.salutation}
+                        suffix={field.name.suffix}
+                      >
+                      </lightning-formatted-name>
                     </template>
                     <template if:true={field.numberValue}>
                       <lightning-formatted-number
@@ -131,20 +118,48 @@
                       >
                       </lightning-formatted-number>
                     </template>
-                    <template if:true={field.location}>
-                      <lightning-formatted-location
-                        latitude={field.location.latitude}
-                        longitude={field.location.longitude}
+                    <template if:true={field.phoneNumber}>
+                      <lightning-formatted-phone
+                        disabled={field.phoneNumber.disabled}
+                        tab-index={field.phoneNumber.tabIndex}
+                        value={field.phoneNumber.value}
                       >
-                      </lightning-formatted-location>
+                      </lightning-formatted-phone>
                     </template>
-                    <template if:true={field.email}>
-                      <lightning-formatted-email
-                        hide-icon={field.email.hideIcon}
-                        label={field.email.label}
-                        value={field.email.value}
+                    <template if:true={field.text}>
+                      <template if:true={field.text.isRich}>
+                        <lightning-formatted-rich-text
+                          linkify={field.text.linkify}
+                          value={field.text.value}
+                        ></lightning-formatted-rich-text>
+                      </template>
+                      <template if:false={field.text.isRich}>
+                        <lightning-formatted-text
+                          linkify={field.text.linkify}
+                          value={field.text.value}
+                        >
+                        </lightning-formatted-text>
+                      </template>
+                    </template>
+                    <template if:true={field.timeValue}>
+                      <lightning-formatted-time value={field.timeValue.value}>
+                      </lightning-formatted-time>
+                    </template>
+                    <template if:true={field.url}>
+                      <lightning-formatted-url
+                        label={field.url.label}
+                        tab-index={field.url.tabIndex}
+                        target={field.url.target}
+                        tooltip={field.url.toolTip}
+                        value={field.url.value}
                       >
-                      </lightning-formatted-email>
+                      </lightning-formatted-url>
+                    </template>
+                    <template if:true={field.isBoolean}>
+                      <div class="slds-checkbox">
+                        <input type="checkbox" checked={field.booleanValue} />
+                        <span class="slds-checkbox_faux"></span>
+                      </div>
                     </template>
                   </div>
                 </div>

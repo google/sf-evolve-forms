@@ -15,22 +15,10 @@
  */
 
 /**
- * @description - Wrapper for displaying a url field in a formatted manner
+ * @description - Wrapper for displaying a time field in a formatted manner.
  */
 @SuppressWarnings('PMD.ApexDoc')
-public class LightningFormattedUrl {
-  @AuraEnabled
-  public String label { get; set; }
-
-  @AuraEnabled
-  public Integer tabIndex { get; set; }
-
-  @AuraEnabled
-  public String target { get; set; }
-
-  @AuraEnabled
-  public String toolTip { get; set; }
-
+public class LightningFormattedTime {
   @AuraEnabled
   public String value { get; set; }
 }

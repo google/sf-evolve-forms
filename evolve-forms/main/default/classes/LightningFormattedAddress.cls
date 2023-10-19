@@ -32,6 +32,9 @@ public class LightningFormattedAddress {
   public Decimal latitude { get; set; }
 
   @AuraEnabled
+  public String locale { get; set;}
+
+  @AuraEnabled
   public Decimal longitude { get; set; }
 
   @AuraEnabled
