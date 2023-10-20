@@ -686,7 +686,8 @@ private with sharing class DynamicFormsControllerTest {
         'Id',
         'User',
         UserInfo.getUserId()
-      )
+      ),
+      'We should receive a valid query result'
     );
   } 
 

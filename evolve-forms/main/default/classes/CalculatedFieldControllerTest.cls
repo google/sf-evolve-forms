@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
+ /**
+ * @group - Test
+ * @description - Tests for CalculatedFieldController
+ */
  @IsTest(isParallel=true)
  private class CalculatedFieldControllerTest {
    private static final Id CASE_REC_ID =
-     Case.sObjectType.getDescribe().getKeyPrefix() + '000000000001';
+    Case.sObjectType.getDescribe(SObjectDescribeOptions.DEFERRED)
+      .getKeyPrefix() + '000000000001';
    private static final String BOGUS_APEX_CLASS_NAME = 'BogusClass';
    private static final String BOGUS_FLOW_API_NAME = 'Bogus';
    private static final String EXCEPTION_SHOULD_BE_THROWN = 'An exception should be thrown';
@@ -291,6 +296,7 @@
      );
    }
  
+   @SuppressWarnings('PMD.ApexDoc')
    public class TestCalculatedFields implements CalculatedFieldController.Renderer {
      public List<CalculatedField> getFields(Id recordId) {
        return fields;
