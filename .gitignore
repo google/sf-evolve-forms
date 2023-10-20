@@ -10,7 +10,8 @@ build.properties
 .eslintignore
 
 # .prettierrc
-.vscode
+.vscode/*
+!.vscode/code-snippets.code-snippets
 .sfdx
 .sf
 #manifest/
