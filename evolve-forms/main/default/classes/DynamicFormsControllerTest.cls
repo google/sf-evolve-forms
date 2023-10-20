@@ -678,6 +678,19 @@ private with sharing class DynamicFormsControllerTest {
     );
   }
 
+  @IsTest
+  private static void selectorShouldBeAbleToQuery() {
+    System.assertNotEquals(
+      null,
+      new DynamicFormsController.Selector().queryFields(
+        'Id',
+        'User',
+        UserInfo.getUserId()
+      ),
+      'We should receive a valid query result'
+    );
+  } 
+
   private static Case createCaseWithChildren(Case[] children) {
     return (Case) JSON.deserialize(
       JSON.serialize(

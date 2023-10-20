@@ -17,7 +17,7 @@
 /**
  * @description - Wrapper for displaying an address field in a formatted manner.
  */
-@SuppressWarnings('PMD.ApexDoc, PMD.FieldAndMethodOrder')
+@SuppressWarnings('PMD.ApexDoc, PMD.FieldAndMethodOrder, PMD.ExcessivePublicCount')
 public class LightningFormattedAddress {
   @AuraEnabled
   public String city { get; set; }
