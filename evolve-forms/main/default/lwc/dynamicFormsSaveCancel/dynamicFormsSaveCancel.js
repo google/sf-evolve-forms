@@ -25,8 +25,8 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
 import { reduceErrors, invokeUtilityBarApi } from "c/dynamicFormsUtils";
 import DynamicFormsCSS from "@salesforce/resourceUrl/DynamicFormsCSS";
-import getWarnings from "@salesforce/apex/DynamicFormsController.getWarnings";
 import DynamicFormsElement from "c/dynamicFormsElement";
+import getWarnings from "@salesforce/apex/DynamicFormsController.getWarnings";
 import evaluateConditionalWarning from "@salesforce/apex/DynamicformsController.evaluateConditionalWarning";
 
 const LMD = "LastModifiedDate";
@@ -235,7 +235,11 @@ export default class DynamicFormsSaveCancel extends DynamicFormsElement {
   }
 
   continueSave() {
-    this.checkRecordUpdatedByOthers();
+    if (this.recordId) {
+      this.checkRecordUpdatedByOthers();
+    } else {
+      this.checkWarningsAndSave();
+    }
     if (
       (this.currentWarnings && this.currentWarnings.length > 0) ||
       (this.conflictingFieldsTabData &&
@@ -327,7 +331,10 @@ export default class DynamicFormsSaveCancel extends DynamicFormsElement {
     this.saveButtonIconName = "";
     this.currentWarnings = [];
     this.blockSaveContinue = false;
-    const record = this.currentState;
+    const record = {
+      sobjectType: this.objectApiName,
+      ...this.currentState
+    };
     let promiseList = [];
     for (let warning of this.conditionalWarnings) {
       promiseList.push(
