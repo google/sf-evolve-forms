@@ -36,6 +36,7 @@ export default class DynamicFormsPageLayout extends LightningElement {
   @api labelOverrides = {};
   @api helpTextOverrides = {};
   @api startInEditMode = false;
+  @api boundary = false;
 
   @track layoutSections;
   @track pageLayoutId;
@@ -47,7 +48,7 @@ export default class DynamicFormsPageLayout extends LightningElement {
     modes: [VIEW]
   })
   wiredUI(result) {
-    if (this.pageLayoutName) {
+    if (this.pageLayoutName || !this.recordId) {
       return;
     }
     if (result.data) {
@@ -57,6 +58,10 @@ export default class DynamicFormsPageLayout extends LightningElement {
       console.error({ error: result.error });
       displayToast(this, ERROR_TITLE, result.error?.body?.error, ERROR_VARIANT);
     }
+  }
+
+  get boundaryTheme() {
+    return this.boundary ? "slds-box slds-theme_default" : "slds-theme_default";
   }
 
   extractLayoutSectionsFromResponse(responseData) {

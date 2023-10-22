@@ -6,12 +6,61 @@
     <description>This allows for a fully rendered Page Layout from LWC</description>
     <targets>
         <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="pageLayoutName" type="String" label="Page Layout Name" description="Enter the name of the page layout to be rendered. If left blank, the name will be fetched using Case_Behavior__mdt."></property>
-            <property name="labelOverrides" type="String" label="Field Label Overrides" description="JSON Mapping of API name to new field label"></property>
-            <property name="helpTextOverrides" type="String" label="Help Text Overrides" description="JSON Mapping of API name to new help text"></property>
+            <property name="pageLayoutName"
+                type="String"
+                label="Page Layout Name"
+                description="Enter the name of the page layout to be rendered."
+            ></property>
+            <property
+                name="boundary"
+                type="Boolean"
+                label="Include Boundary?"
+                description="Set to true to include a box around the field sections"
+            ></property>
+            <property name="labelOverrides"
+                type="String"
+                label="Field Label Overrides"
+                description="JSON Mapping of API name to new field label"
+            ></property>
+            <property name="helpTextOverrides"
+                type="String"
+                label="Help Text Overrides"
+                description="JSON Mapping of API name to new help text"
+            ></property>
+        </targetConfig>
+        <targetConfig targets="lightning__AppPage,lightningCommunity__Default">
+            <property name="objectApiName"
+                type="String"
+                label="sObject API Name"
+                description="Enter the API name of the sObject."
+            ></property>
+            <property name="pageLayoutName"
+                type="String"
+                label="Page Layout Name"
+                description="Enter the name of the page layout to be rendered."
+            ></property>
+            <property
+                name="boundary"
+                type="Boolean"
+                label="Include Boundary?"
+                description="Set to true to include a box around the field sections"
+            ></property>
+            <property name="labelOverrides"
+                type="String"
+                label="Field Label Overrides"
+                description="JSON Mapping of API name to new field label"
+            ></property>
+            <property name="helpTextOverrides"
+                type="String"
+                label="Help Text Overrides"
+                description="JSON Mapping of API name to new help text"
+            ></property>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

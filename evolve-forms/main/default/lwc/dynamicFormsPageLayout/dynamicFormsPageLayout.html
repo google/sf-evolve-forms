@@ -15,20 +15,22 @@
 -->
 
 <template>
-  <template for:each={layoutSections} for:item="section">
-    <c-dynamic-forms-field-section
-      key={section.sectionLabel}
-      record-id={recordId}
-      object-api-name={objectApiName}
-      section-label={section.sectionLabel}
-      field-api-names={section.apiNamesCsv}
-      columns={section.numberOfColumns}
-      hide-section-label-on-view={section.hideSectionLabelOnView}
-      hide-section-label-on-edit={section.hideSectionLabelOnEdit}
-      label-overrides={labelOverrides}
-      help-text-overrides={helpTextOverrides}
-      start-in-edit-mode={startInEditMode}
-    >
-    </c-dynamic-forms-field-section>
-  </template>
+  <div class={boundaryTheme}>
+    <template for:each={layoutSections} for:item="section">
+      <c-dynamic-forms-field-section
+        key={section.sectionLabel}
+        record-id={recordId}
+        object-api-name={objectApiName}
+        section-label={section.sectionLabel}
+        field-api-names={section.apiNamesCsv}
+        columns={section.numberOfColumns}
+        hide-section-label-on-view={section.hideSectionLabelOnView}
+        hide-section-label-on-edit={section.hideSectionLabelOnEdit}
+        label-overrides={labelOverrides}
+        help-text-overrides={helpTextOverrides}
+        start-in-edit-mode={startInEditMode}
+      >
+      </c-dynamic-forms-field-section>
+    </template>
+  </div>
 </template>
