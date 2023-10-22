@@ -1,34 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>59.0</apiVersion>
-    <isExposed>true</isExposed>
-    <masterLabel>Calculated Field Section</masterLabel>
-    <description
-  >This allows for dynamically calculated fields rendered as a field section.</description>
-    <targets>
-        <target>lightning__RecordPage</target>
-    </targets>
-     <targetConfigs>
-        <targetConfig targets="lightning__RecordPage">
-            <property
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Calculated Field Section</masterLabel>
+  <description>This allows for dynamically calculated fields rendered as a field section.</description>
+  <targets>
+    <target>lightning__RecordPage</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightning__RecordPage">
+      <property
         name="sectionLabel"
         type="String"
         label="Section Label"
         description="Enter the label of this section"
       />
-            <property
+      <property
         name="hideSectionTitle"
         type="Boolean"
         label="Hide Section Label?"
         description="Set to true to hide the section label."
       />
-            <property
+      <property
         name="apexClassName"
         type="String"
         label="Apex Class Name"
         description="Enter Apex Class Name to be used for calculating fields. Please mention either Apex class Name or Flow Name."
       />
-       <property
+      <property
         name="flowApiName"
         type="String"
         label="Flow API Name"
@@ -40,13 +39,13 @@
         label="Include Boundary?"
         description="Set to true to include a box around the field section"
       />
-            <property
+      <property
         name="columns"
         type="String"
         label="Number of Columns"
         description="Enter the number of columns for this section"
         datasource="1,2"
       />
-        </targetConfig>
-    </targetConfigs>
+    </targetConfig>
+  </targetConfigs>
 </LightningComponentBundle>

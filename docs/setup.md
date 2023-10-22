@@ -3,6 +3,8 @@
 There are a few steps necessary to get started using Evolve Forms on a given
 sObject within your org.
 
+## Editing Records
+
 ### 1. Replace the Default Edit Button
 
 Evolve Forms uses a custom `Edit` button on the lightning record page, so we need
@@ -47,3 +49,11 @@ component.
 ![Save and Cancel Buttons](images/SaveAndCancelButtons.png)
 
 Voilà! you are now ready to use Evolve Forms on the selected sObject.
+
+## Creating Records
+
+Creating records using Evolve is very similar to editing records. Use the Page Layout and Field Section components however you need to, but instead of using the [`c-dynamic-forms-save-cancel`](/evolve-forms/main/default/lwc/dynamicFormsElement/dynamicFormsSaveCancel.js) component to render the buttons, use the [`c-dynamic-forms-create`](/evolve-forms/main/default/lwc/dynamicFormsElement/dynamicFormsCreate.js) component instead.
+
+![Create Record](images/RecordCreate.gif)
+
+NOTE: When using Evolve forms to create records, the sObject API name must be passed to the component from page builder or from a containing component. If using the Page Layout component, the layout's API name must also be passed to the component from page builder or from a containing component.

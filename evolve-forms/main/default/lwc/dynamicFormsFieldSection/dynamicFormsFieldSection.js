@@ -296,7 +296,12 @@ export default class DynamicFormsFieldSection extends DynamicFormsElement {
         }
       })
       .catch((error) => {
-        displayToast(this, "Error", this.generateErrorMessage(error), "error");
+        displayToast(
+          this,
+          "Error",
+          this.generateUserAccessErrorMessage(error),
+          "error"
+        );
       });
   }
 
