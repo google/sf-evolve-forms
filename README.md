@@ -32,7 +32,7 @@ For detailed information on how to get started with Evolve Forms and take full a
 
 ## Documentation
 
-### [Editing Records](docs/editing_records.md)
+### [Editing and Creating Records](docs/editing_and_creating_records.md)
 
 ### [Calculated Fields](docs/calculated_fields.md)
 
