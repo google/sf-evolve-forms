@@ -1,8 +1,8 @@
-# Editing Records
+# Editing and Creating Records
 
-Editing records using Evolve Forms uses an implementation of the
+Editing and creating records with Evolve Forms uses an implementation of the
 [Mediator Pattern](https://en.wikipedia.org/wiki/Mediator_pattern) which works
-by using the
+by utilizing the
 [Lightning Message Service](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_message_channel)
 to propagate events across the
 [Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lightning_app_builder/lightning_app_builder_recordpage)

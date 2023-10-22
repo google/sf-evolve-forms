@@ -56,4 +56,4 @@ Creating records using Evolve is very similar to editing records. Use the Page L
 
 ![Create Record](images/RecordCreate.gif)
 
-NOTE: When using Evolve forms to create records, the sObject API name must be passed to the component from page builder or from a containing component. If using the Page Layout component, the layout's API name must also be passed to the component from page builder or from a containing component.
+> NOTE: When using Evolve forms to create records, the sObject API name must be passed to the component from page builder or from a containing component. If using the Page Layout component, the layout's API name must also be passed to the component from page builder or from a containing component.
