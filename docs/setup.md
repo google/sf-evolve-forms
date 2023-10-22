@@ -52,7 +52,7 @@ Voilà! you are now ready to use Evolve Forms on the selected sObject.
 
 ## Creating Records
 
-Creating records using Evolve is very similar to editing records. Use the Page Layout and Field Section components however you need to, but instead of using the [`c-dynamic-forms-save-cancel`](/evolve-forms/main/default/lwc/dynamicFormsElement/dynamicFormsSaveCancel.js) component to render the buttons, use the [`c-dynamic-forms-create`](/evolve-forms/main/default/lwc/dynamicFormsElement/dynamicFormsCreate.js) component instead.
+Creating records using Evolve is very similar to editing records. Use the Page Layout and Field Section components however you need to, but instead of using the [`c-dynamic-forms-save-cancel`](/evolve-forms/main/default/lwc/dynamicFormsSaveCancel/dynamicFormsSaveCancel.js) component to render the buttons, use the [`c-dynamic-forms-create`](/evolve-forms/main/default/lwc/dynamicFormsCreate/dynamicFormsCreate.js) component instead.
 
 ![Create Record](images/RecordCreate.gif)
 
