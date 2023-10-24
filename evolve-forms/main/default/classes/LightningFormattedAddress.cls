@@ -17,7 +17,9 @@
 /**
  * @description - Wrapper for displaying an address field in a formatted manner.
  */
-@SuppressWarnings('PMD.ApexDoc, PMD.FieldAndMethodOrder')
+@SuppressWarnings(
+  'PMD.ApexDoc, PMD.FieldAndMethodOrder, PMD.ExcessivePublicCount'
+)
 public class LightningFormattedAddress {
   @AuraEnabled
   public String city { get; set; }
@@ -30,6 +32,9 @@ public class LightningFormattedAddress {
 
   @AuraEnabled
   public Decimal latitude { get; set; }
+
+  @AuraEnabled
+  public String locale { get; set; }
 
   @AuraEnabled
   public Decimal longitude { get; set; }

@@ -15,7 +15,7 @@
 -->
 
 <template>
-  <!-- Implementation for botton of page-pinned button -->
+  <!-- Implementation for bottom of page-pinned button -->
   <template if:true={pinToBottom}>
     <div class="bump"></div>
     <div
@@ -35,7 +35,7 @@
         variant="brand"
         label={buttonLabel}
         type="submit"
-        onclick={save}
+        onclick={handleSavePress}
         class="slds-p-horizontal_small"
         disabled={saveIsDisabled}
       ></lightning-button>
@@ -63,5 +63,56 @@
       disabled={saveIsDisabled}
     >
     </lightning-button>
+  </template>
+
+  <template if:true={showModal}>
+    <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <h2
+            data-id="confirmation-modal-heading"
+            tabindex="0"
+            class="slds-text-heading_medium slds-hyphenate"
+          >
+            Please Confirm
+          </h2>
+        </header>
+        <div
+          class="slds-modal__content slds-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <template if:true={currentWarnings}>
+            <div class="slds-align_absolute-center">
+              <ul class="slds-list_dotted" tabindex="0">
+                <template for:each={currentWarnings} for:item="warning">
+                  <li key={warning}>{warning}</li>
+                </template>
+              </ul>
+            </div>
+          </template>
+        </div>
+
+        <footer class="slds-modal__footer">
+          <button
+            class="slds-button slds-button_neutral"
+            onclick={closeModal}
+            data-id="closeButton"
+            title="Close"
+            aria-label="Close"
+          >
+            Close
+          </button>
+          <button
+            class="slds-button slds-button_brand"
+            title="Save"
+            data-id="confirmButton"
+            onclick={save}
+            aria-label="Save"
+          >
+            Save
+          </button>
+        </footer>
+      </div>
+    </section>
   </template>
 </template>

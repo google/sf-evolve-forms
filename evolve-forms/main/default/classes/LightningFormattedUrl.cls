@@ -23,6 +23,9 @@ public class LightningFormattedUrl {
   public String label { get; set; }
 
   @AuraEnabled
+  public Integer tabIndex { get; set; }
+
+  @AuraEnabled
   public String target { get; set; }
 
   @AuraEnabled
@@ -30,7 +33,4 @@ public class LightningFormattedUrl {
 
   @AuraEnabled
   public String value { get; set; }
-
-  @AuraEnabled
-  public Integer tabIndex { get; set; }
 }

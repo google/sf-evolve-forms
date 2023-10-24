@@ -24,8 +24,9 @@ The `CalculatedField` class has public `@AuraEnabled` variables whose data types
 | [LightningFormattedName](../evolve-forms/main/default/classes/LightningFormattedName.cls) | [lightning-formatted-name](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-name/example) | 
 | [LightningFormattedNumber](../evolve-forms/main/default/classes/LightningFormattedNumber.cls) | [lightning-formatted-number](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-number/example) | 
 | [LightningFormattedPhoneNumber](../evolve-forms/main/default/classes/LightningFormattedPhoneNumber.cls) | [lightning-formatted-phone](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-phone/example) | 
-| [LightningFormattedUrl](../evolve-forms/main/default/classes/LightningFormattedUrl.cls) | [lightning-formatted-url](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-url/example) | 
 | [LightningFormattedText](../evolve-forms/main/default/classes/LightningFormattedText.cls) | [lightning-formatted-text](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-text/example)<br/>[lightning-formatted-rich-text](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-rich-text/example) |
+| [LightningFormattedTime](../evolve-forms/main/default/classes/LightningFormattedTime.cls) | [lightning-formatted-time](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-time/example) | 
+| [LightningFormattedUrl](../evolve-forms/main/default/classes/LightningFormattedUrl.cls) | [lightning-formatted-url](https://developer.salesforce.com/docs/component-library/bundle/lightning-formatted-url/example) | 
 | Boolean| [lightning-input](https://developer.salesforce.com/docs/component-library/bundle/lightning-input/example) (rendered as `type="checkbox"`) |
 
 The values in the populated data type will be rendered on the screen as if it were a field on the record, using all of the formatting capabilities of the corresponding Lightning Web Component.

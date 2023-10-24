@@ -687,6 +687,7 @@ public with sharing class DynamicFormsController {
   }
 
   @TestVisible
+  @SuppressWarnings('PMD.ApexCRUDViolation')
   private inherited sharing virtual class Selector {
     /**
      * @description - Fetches the metadata for conditional warnings within the system.

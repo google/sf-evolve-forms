@@ -14,13 +14,10 @@
  * limitations under the License.
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import { createRecord } from "lightning/uiRecordApi";
-import { loadStyle } from "lightning/platformResourceLoader";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import DynamicFormsCSS from "@salesforce/resourceUrl/DynamicFormsCSS";
-import DynamicFormsElement from "c/dynamicFormsElement";
-import { reduceErrors } from "c/dynamicFormsUtils";
+import DynamicFormsSaveCancel from "c/dynamicFormsSaveCancel";
 
 /*
  * this component broadcasts completion events so other LWC can react to this component's actions.
@@ -31,7 +28,7 @@ import { reduceErrors } from "c/dynamicFormsUtils";
  * */
 const COMPLETION_EVENT = "completion";
 
-export default class DynamicFormsCreate extends DynamicFormsElement {
+export default class DynamicFormsCreate extends DynamicFormsSaveCancel {
   @api objectApiName;
   @api buttonLabel = "Submit";
   @api successMessage = "Record Created";
@@ -41,16 +38,11 @@ export default class DynamicFormsCreate extends DynamicFormsElement {
   /* Used for Parent component override for custom validations */
   @api disableCreateButton = false;
 
-  @track saveIsDisabled = false;
-  @track saveInProgress = false;
-  @track requiredFieldApiNames = new Set();
-  @track fields = {};
-
   save() {
     this.broadcast(this.EVENT_TYPE.SAVE_START);
 
     let event = null;
-    let fields = this.fields;
+    let fields = this.pendingUpdates;
     const recordInput = { fields };
     recordInput.apiName = this.objectApiName;
 
@@ -90,71 +82,5 @@ export default class DynamicFormsCreate extends DynamicFormsElement {
           );
         }
       });
-  }
-
-  cancel() {
-    this.broadcast(this.EVENT_TYPE.CANCEL);
-  }
-
-  getSaveIsDisabled() {
-    return (
-      this.saveInProgress ||
-      this.disableCreateButton ||
-      Array.from(this.requiredFieldApiNames).find(
-        (field) => !this.fields[field]
-      )
-    );
-  }
-
-  generateErrorMessage(error) {
-    const errorMessages = reduceErrors(error);
-    if (!errorMessages) {
-      return error.body.message;
-    }
-    let message = "The following errors occured:";
-    for (const errorMessage of errorMessages) {
-      message += `\n\t* ${errorMessage}`;
-    }
-    return message;
-  }
-
-  handleMessage(message) {
-    if (message.eventType === this.EVENT_TYPE.UPDATE) {
-      this.fields[message.fieldApiName] = message.newValue;
-      this.saveIsDisabled = this.getSaveIsDisabled();
-    } else if (message.eventType === this.EVENT_TYPE.CANCEL) {
-      this.fields = {};
-      this.requiredFieldApiNames.clear();
-      this.dispatchEvent(
-        new CustomEvent(COMPLETION_EVENT, {
-          detail: {
-            status: "cancel"
-          }
-        })
-      );
-    } else if (message.eventType === this.EVENT_TYPE.CHECK_EDIT) {
-      this.broadcast(this.EVENT_TYPE.EDIT);
-    } else if (message.eventType === this.EVENT_TYPE.SAVE_START) {
-      this.saveInProgress = true;
-    } else if (message.eventType === this.EVENT_TYPE.SAVE_END) {
-      this.saveInProgress = false;
-    } else if (message.eventType === this.EVENT_TYPE.REQUIRED_FIELD) {
-      this.requiredFieldApiNames.add(message.fieldApiName);
-      this.saveIsDisabled = this.getSaveIsDisabled();
-    } else if (message.eventType === this.EVENT_TYPE.RESET) {
-      this.requiredFieldApiNames.clear();
-      this.fields = {};
-      this.saveIsDisabled = this.getSaveIsDisabled();
-    }
-  }
-
-  connectedCallback() {
-    this.saveIsDisabled = this.getSaveIsDisabled();
-    loadStyle(this, DynamicFormsCSS);
-    this.subscribeToMessageChannel();
-  }
-
-  disconnectedCallback() {
-    this.unsubscribeToMessageChannel();
   }
 }

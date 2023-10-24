@@ -15,8 +15,8 @@
 -->
 
 <template>
-  <div class={boundaryTheme}>
-    <template if:true={shouldRenderSection}>
+  <template if:true={shouldRenderSection}>
+    <div class={boundaryTheme}>
       <lightning-record-edit-form
         record-id={recordId}
         object-api-name={objectApiName}
@@ -199,9 +199,9 @@
           </c-dynamic-forms-collapsible-section>
         </lightning-record-view-form>
       </lightning-record-edit-form>
-    </template>
+    </div>
     <template if:true={error}>
       <p>error</p>
     </template>
-  </div>
+  </template>
 </template>
