@@ -4,12 +4,14 @@ Evolve Forms enables developers to build custom components which can be used to
 enter data in a non-standard way while choreographing the saving of the record
 with the same set of edit/save/cancel buttons as the rest of the page.
 
+## Example Slider Component
+
 In the below example, we created a custom slider component and have the value of
 the slider map to the `Account.NumberOfEmployees` field for the record.
 
 ![Slider Demo](images/SliderDemo.gif)
 
-#### sliderDemo.html
+### sliderDemo.html
 
 <!-- prettier-ignore -->
 ```html
@@ -36,7 +38,7 @@ the slider map to the `Account.NumberOfEmployees` field for the record.
 </template>
 ```
 
-#### sliderDemo.js
+### sliderDemo.js
 
 ```js
 import { api, wire } from "lwc";
@@ -91,7 +93,7 @@ export default class SliderDemo extends DynamicFormsElement {
 }
 ```
 
-#### sliderDemo.js-meta.xml
+### sliderDemo.js-meta.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -111,6 +113,11 @@ export default class SliderDemo extends DynamicFormsElement {
     </targetConfigs>
 </LightningComponentBundle>
 ```
+
+## Creating Custom Components
+
+VS Code Code Snippets are included in this project to facilitate the creation of custom components that integrate with SF Evolve Forms. Code Snippets are provided for JavaScript, HTML, and js-meta.xml files. To make use of the Code Snippets, create a new LWC in your project directory via SF CLI or Salesforce Extension for VS Code. Open the JavaScript file and type `evolve js` in the file. Click enter and the entire file contents will be replaced with a templated file whose class adheres to the correct file naming conventions and extends `DynamicFormsElement`. Repeat for html and js-meta.xml files as needed.
+
 
 ## Event Details
 
