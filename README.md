@@ -1,6 +1,16 @@
 # Evolve Forms
 
-Evolve Forms is a powerful solution designed to address the needs of complex Salesforce applications in organizations with multiple business units sharing a single org. This project empowers developers and administrators by extending the capabilities of Salesforce, providing a wide array of functionalities that are not natively available. With Evolve Forms, you can streamline and enhance your Salesforce experience to meet the specific requirements of your business units.
+Evolve Forms is a powerful solution designed to address the needs of complex Salesforce applications in organizations with multiple business units sharing a single org. With Evolve Forms, you can tailor and enhance the Salesforce user experience to meet the specific requirements of your business units.
+
+## Installation
+
+<a href="https://githubsfdeploy.herokuapp.com?owner=google&amp;repo=sf-evolve-forms">
+  <img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png" alt="Deploy to Salesforce" />
+</a>
+
+#### [Unlocked Package Installation (Production)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tDn000000nG2MIAU)
+
+#### [Unlocked Package Installation (Sandbox)](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tDn000000nG2MIAU)
 
 ## Key Features
 

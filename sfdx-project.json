@@ -2,11 +2,19 @@
   "packageDirectories": [
     {
       "path": "evolve-forms",
-      "default": true
+      "default": true,
+      "package": "Evolve Forms",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": ""
     }
   ],
   "name": "Evolve Forms",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "59.0"
+  "sourceApiVersion": "59.0",
+  "packageAliases": {
+    "Evolve Forms": "0HoDn000000XZtZKAW",
+    "Evolve Forms@0.1.0-1": "04tDn000000nG2MIAU"
+  }
 }
