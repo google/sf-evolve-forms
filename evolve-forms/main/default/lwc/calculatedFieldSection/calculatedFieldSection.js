@@ -90,6 +90,10 @@ export default class CalculatedFieldSection extends DynamicFormsElement {
     );
   }
 
+  get hasFields() {
+    return this.fields && this.fields.length > 0;
+  }
+
   get size() {
     return this.columns === "2" ? 6 : 12;
   }

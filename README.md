@@ -8,9 +8,9 @@ Evolve Forms is a powerful solution designed to address the needs of complex Sal
   <img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png" alt="Deploy to Salesforce" />
 </a>
 
-#### [Unlocked Package Installation (Production)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tDn000000nG2MIAU)
+#### [Unlocked Package Installation (Production)](https://login.salesforce.com/packaging/installPackage.apexp?p0=08cDn000000TO7RIAW)
 
-#### [Unlocked Package Installation (Sandbox)](https://test.salesforce.com/packaging/installPackage.apexp?p0=04tDn000000nG2MIAU)
+#### [Unlocked Package Installation (Sandbox)](https://test.salesforce.com/packaging/installPackage.apexp?p0=08cDn000000TO7RIAW)
 
 ## Key Features
 

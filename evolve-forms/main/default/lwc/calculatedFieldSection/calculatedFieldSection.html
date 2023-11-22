@@ -15,8 +15,8 @@
 -->
 
 <template>
-  <div class={boundaryTheme}>
-    <template if:true={fields}>
+  <template if:true={hasFields}>
+    <div class={boundaryTheme}>
       <template if:true={showSpinner}>
         <lightning-spinner size="small"></lightning-spinner>
       </template>
@@ -168,6 +168,6 @@
           </template>
         </lightning-layout>
       </c-dynamic-forms-collapsible-section>
-    </template>
-  </div>
+    </div>
+  </template>
 </template>
