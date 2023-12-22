@@ -57,20 +57,29 @@
                           ></lightning-helptext>
                         </template>
                       </template>
-                      <div class={element.labelVariant}>
-                        <lightning-input-field
+                      <template lwc:if={element.isCalculated}>
+                        <lightning-output-field
                           field-name={element.fieldApiName}
-                          required={element.required}
-                          onchange={handleFieldChange}
-                          onfocusin={handleFocusIn}
-                          onfocusout={handleFocusOut}
-                          data-field-api-name={element.fieldApiName}
                           variant={element.labelVariant}
-                          value={element.value}
-                          disabled={element.readOnly}
                         >
-                        </lightning-input-field>
-                      </div>
+                        </lightning-output-field>
+                      </template>
+                      <template lwc:else>
+                        <div class={element.labelVariant}>
+                          <lightning-input-field
+                            field-name={element.fieldApiName}
+                            required={element.required}
+                            onchange={handleFieldChange}
+                            onfocusin={handleFocusIn}
+                            onfocusout={handleFocusOut}
+                            data-field-api-name={element.fieldApiName}
+                            variant={element.labelVariant}
+                            value={element.value}
+                            disabled={element.readOnly}
+                          >
+                          </lightning-input-field>
+                        </div>
+                      </template>
                     </template>
                     <template if:false={editMode}>
                       <lightning-layout
