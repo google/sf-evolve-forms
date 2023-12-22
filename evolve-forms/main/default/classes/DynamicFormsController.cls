@@ -559,6 +559,9 @@ public with sharing class DynamicFormsController {
     public String nameReferenceToQuery;
 
     @AuraEnabled
+    public Boolean isCalculated { get; set; }
+
+    @AuraEnabled
     public Boolean isReference { get; set; }
 
     @AuraEnabled
@@ -621,7 +624,7 @@ public with sharing class DynamicFormsController {
       this.required = trimmedField.startsWith('*');
       this.readOnly = trimmedField.endsWith('*') && !this.required;
       this.isSystemField = false;
-
+      
       // Here field would have CreatedById/LastModifiedById as field Api Names.
       if (SYSTEM_FIELDS_MAP.containsKey(this.fieldApiName)) {
         this.isSystemField = true;
@@ -638,6 +641,7 @@ public with sharing class DynamicFormsController {
       this.fieldLabel = fieldResult.getLabel();
       this.helpText = fieldResult.getInlineHelpText();
       this.fieldType = FIELD_TYPE_MAP.get(fieldResult.getType());
+      this.isCalculated = fieldResult.isCalculated();
 
       if (fieldResult.getType() == Schema.DisplayType.REFERENCE) {
         this.isReference = true;

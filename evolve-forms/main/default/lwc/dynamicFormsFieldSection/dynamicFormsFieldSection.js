@@ -81,7 +81,8 @@ export default class DynamicFormsFieldSection extends DynamicFormsElement {
           : "label-stacked",
         labelOverride: this.labelOverrides[field.fieldApiName],
         helpText: this.helpTextOverrides[field.fieldApiName] ?? field.helpText,
-        readOnlyValue: field.readOnlyValue || ""
+        readOnlyValue: field.readOnlyValue ?? "",
+        isCalculated: field.isCalculated ?? false,
       }));
       if (!this.requestedOverrides) {
         this.requestedOverrides = true;
