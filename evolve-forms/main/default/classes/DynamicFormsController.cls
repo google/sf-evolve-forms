@@ -764,6 +764,6 @@ public with sharing class DynamicFormsController {
   }
   
   private Schema.SObjectType getSObjectTypeByApiName(String sobjectApiName) {
-    return Schema.describeSObjects(new String[] {sobjectApiName});
+    return Schema.describeSObjects(new String[] {sobjectApiName}).get(0);
   }
 }
