@@ -15,11 +15,12 @@
 -->
 
 <template>
-  <template if:true={editMode}>
-    <template if:false={detach}>
+  <template lwc:if={editMode}>
+    <template lwc:if={detach}></template>
+    <template lwc:else>
       <div class="bump"></div>
     </template>
-    <template if:true={showModal}>
+    <template lwc:if={showModal}>
       <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
         <div class="slds-modal__container">
           <header class="slds-modal__header">
@@ -35,7 +36,7 @@
             class="slds-modal__content slds-p-around_medium"
             id="modal-content-id-1"
           >
-            <template if:true={currentWarnings}>
+            <template lwc:if={currentWarnings}>
               <div class="slds-align_absolute-center">
                 <ul class="slds-list_dotted" tabindex="0">
                   <template for:each={currentWarnings} for:item="warning">
@@ -45,7 +46,7 @@
               </div>
             </template>
 
-            <template if:true={conflictingFieldsTabData.length}>
+            <template lwc:if={conflictingFieldsTabData.length}>
               <p>
                 This record was modified during your edit session. Please select
                 values for conflicting fields.
