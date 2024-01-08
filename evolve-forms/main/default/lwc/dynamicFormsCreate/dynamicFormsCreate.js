@@ -31,6 +31,7 @@ const COMPLETION_EVENT = "completion";
 export default class DynamicFormsCreate extends DynamicFormsSaveCancel {
   @api objectApiName;
   @api buttonLabel = "Submit";
+  @api closeModalOnCancel = false;
   @api successMessage = "Record Created";
   @api includeCancelButton = false;
   @api pinToBottom = false;
