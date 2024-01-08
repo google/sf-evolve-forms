@@ -23,7 +23,11 @@ import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import { loadStyle } from "lightning/platformResourceLoader";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { refreshApex } from "@salesforce/apex";
-import { reduceErrors, invokeUtilityBarApi } from "c/dynamicFormsUtils";
+import {
+  reduceErrors,
+  invokeUtilityBarApi,
+  invokeWorkspaceApi
+} from "c/dynamicFormsUtils";
 import DynamicFormsCSS from "@salesforce/resourceUrl/DynamicFormsCSS";
 import DynamicFormsElement from "c/dynamicFormsElement";
 import getWarnings from "@salesforce/apex/DynamicFormsController.getWarnings";
@@ -159,6 +163,27 @@ export default class DynamicFormsSaveCancel extends DynamicFormsElement {
       }
     }
     return classes.join(" ");
+  }
+
+  closeAndRedirect(objectApiName, filterName) {
+    let focusedTabId;
+    invokeWorkspaceApi(this, "getFocusedTabInfo")
+      .then((focusedTab) => {
+        focusedTabId = focusedTab.tabId;
+        return this.navigateToSObject(objectApiName, filterName);
+      })
+      .then(() => {
+        return invokeWorkspaceApi(this, "closeTab", { tabId: focusedTabId });
+      })
+      .catch((error) => {
+        this.dispatchEvent(
+          new ShowToastEvent({
+            title: "Unable to close the tab.",
+            message: this.generateErrorMessage(error),
+            variant: "error"
+          })
+        );
+      });
   }
 
   cancel() {

@@ -157,4 +157,18 @@ export default class DynamicFormsElement extends NavigationMixin(
       }
     });
   }
+
+  // Helper method to navigate to object's list view.
+  navigateToSObject(objectApiName, filterName) {
+    return this[NavigationMixin.Navigate]({
+      type: "standard__objectPage",
+      attributes: {
+        objectApiName: objectApiName,
+        actionName: "list"
+      },
+      state: {
+        filterName: filterName ?? "recent"
+      }
+    });
+  }
 }

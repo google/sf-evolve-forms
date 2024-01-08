@@ -83,4 +83,12 @@ export default class DynamicFormsCreate extends DynamicFormsSaveCancel {
         }
       });
   }
+
+  cancelForm() {
+    if (this.closeModalOnCancel === true) {
+      this.closeAndRedirect(this.objectApiName);
+    } else {
+      this.cancel();
+    }
+  }
 }
