@@ -223,6 +223,9 @@ export default class DynamicFormsSaveCancel extends DynamicFormsElement {
         this.requiredFieldApiNames.delete(message.fieldApiName);
         this.saveIsDisabled = this.getSaveIsDisabled();
       }
+    } else if (message.eventType === this.EVENT_TYPE.RESET) {
+      this.pendingUpdates = {};
+      this.requiredFieldApiNames.clear();
     }
   }
 
