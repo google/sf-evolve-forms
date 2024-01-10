@@ -36,7 +36,13 @@ export default class DynamicFormsCreate extends DynamicFormsSaveCancel {
   @api pinToBottom = false;
   @api redirectToRecordOnCreate = false;
   /* Used for Parent component override for custom validations */
-  @api disableCreateButton = false;
+  @api
+  get disableCreateButton() {
+    return this.saveIsDisabled;
+  }
+  set disableCreateButton(value) {
+    this.saveIsDisabled = value;
+  }
 
   save() {
     this.broadcast(this.EVENT_TYPE.SAVE_START);
