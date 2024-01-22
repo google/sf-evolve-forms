@@ -61,10 +61,19 @@ export default class DynamicFormsPredefinedValues extends DynamicFormsElement {
         .map((fieldOverride) => fieldOverride.split("="))
         .filter((fieldComponents) => fieldComponents.length === 2)
         .forEach((fieldComponents) => {
-          fields[fieldComponents[0]] = decodeURIComponent(fieldComponents[1]);
+          fields[fieldComponents[0]] = this.parseFieldComponent(decodeURIComponent(fieldComponents[1]));
         });
     }
     return fields;
+  }
+
+  // Parse fieldComponent to identify boolean fields
+  parseFieldComponent(val) {
+    if (typeof val === "string" && val.toLowerCase() === "true")
+      return true;
+    else if (typeof val === "string" && val.toLowerCase() === "false")
+      return false;
+    return val;
   }
 
   // Handle message from Dynamic Forms Message Channel
