@@ -14,8 +14,11 @@
  limitations under the License.
 -->
 
-<template>
-  <template if:false={hideLabel}>
+<template>  
+  <template lwc:if={hideLabel}>
+    <slot></slot>
+  </template>
+  <template lwc:else>
     <div class={sectionClass}>
       <div class="slds-section__title">
         <button
@@ -42,8 +45,5 @@
         <slot></slot>
       </div>
     </div>
-  </template>
-  <template if:true={hideLabel}>
-    <slot></slot>
   </template>
 </template>

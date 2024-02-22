@@ -15,7 +15,7 @@
 -->
 
 <template>
-  <template if:true={apiNamesCsv}>
+  <template lwc:if={apiNamesCsv}>
     <c-dynamic-forms-field-section
       record-id={recordId}
       object-api-name={objectApiName}
