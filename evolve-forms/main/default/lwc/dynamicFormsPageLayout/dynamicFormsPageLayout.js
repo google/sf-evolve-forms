@@ -37,6 +37,7 @@ export default class DynamicFormsPageLayout extends LightningElement {
   @api helpTextOverrides = {};
   @api startInEditMode = false;
   @api boundary = false;
+  @api disableCompactLayoutHover = false;
 
   @track layoutSections;
   @track pageLayoutId;

@@ -45,6 +45,7 @@ export default class DynamicFormsFieldSection extends DynamicFormsElement {
   @api labelOverrides = {};
   @api helpTextOverrides = {};
   @api groupOverride = null;
+  @api disableCompactLayoutHover = false;
 
   @track error;
   @track sectionElements;
@@ -214,6 +215,9 @@ export default class DynamicFormsFieldSection extends DynamicFormsElement {
     isLookupFieldInFocus,
     isCompactLayoutInFocus
   ) {
+    if (this.disableCompactLayoutHover) {
+      return;
+    }
     let currentlyHoveringOverLookupField =
       event.currentTarget.getAttribute(DATA_FIELD_API_NAME);
     this.sectionElements

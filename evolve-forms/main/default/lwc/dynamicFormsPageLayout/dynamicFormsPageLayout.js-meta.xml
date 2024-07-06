@@ -23,6 +23,12 @@
                 label="Include Boundary?"
                 description="Set to true to include a box around the field sections"
             ></property>
+            <property
+                name="disableCompactLayoutHover"
+                type="Boolean"
+                label="Disable Compact Layout on Hover?"
+                description="Set to true to disable the compact layout from appearing when hovering over a lookup field."
+            ></property>
             <property name="labelOverrides"
                 type="String"
                 label="Field Label Overrides"
@@ -35,6 +41,13 @@
             ></property>
         </targetConfig>
         <targetConfig targets="lightning__AppPage,lightningCommunity__Default">
+            <property
+                name="recordId"
+                type="String"
+                label="Record Id"
+                description="Automatically bind the page's record id to the component variable"
+                default="{!recordId}"
+            ></property>
             <property name="objectApiName"
                 type="String"
                 label="sObject API Name"
@@ -50,6 +63,12 @@
                 type="Boolean"
                 label="Include Boundary?"
                 description="Set to true to include a box around the field sections"
+            ></property>
+            <property
+                name="disableCompactLayoutHover"
+                type="Boolean"
+                label="Disable Compact Layout on Hover?"
+                description="Set to true to disable the compact layout from appearing when hovering over a lookup field."
             ></property>
             <property name="labelOverrides"
                 type="String"
