@@ -34,5 +34,7 @@ jobs:
       - name: Create package version
         id: create
         run: |
-          sf package version create --definition-file config/project-scratch-def.json --package "Evolve Forms" --version-number ${{ inputs.packageVersion }} --wait 120 --code-coverage --installation-key-bypass
+          sf package version create --definition-file config/project-scratch-def.json --package "Evolve Forms" --version-number ${INPUTS_PACKAGEVERSION} --wait 120 --code-coverage --installation-key-bypass
           cat sfdx-project.json
+        env:
+          INPUTS_PACKAGEVERSION: ${{ inputs.packageVersion }}
