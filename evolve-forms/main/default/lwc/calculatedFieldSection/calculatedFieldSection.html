@@ -15,9 +15,9 @@
 -->
 
 <template>
-  <template if:true={hasFields}>
+  <template lwc:if={hasFields}>
     <div class={boundaryTheme}>
-      <template if:true={showSpinner}>
+      <template lwc:if={showSpinner}>
         <lightning-spinner size="small"></lightning-spinner>
       </template>
       <c-dynamic-forms-collapsible-section
@@ -35,7 +35,7 @@
                 <div class="slds-form-element__label slds-p-top_xx-small">
                   {field.label}
                 </div>
-                <template if:true={field.helpText}>
+                <template lwc:if={field.helpText}>
                   <lightning-helptext
                     content={field.helpText}
                   ></lightning-helptext>
@@ -44,7 +44,7 @@
                   <div
                     class="slds-form-slds-form-element__static slds-p-bottom_xx-small slds-hyphenate"
                   >
-                    <template if:true={field.address}>
+                    <template lwc:if={field.address}>
                       <lightning-formatted-address
                         city={field.address.city}
                         country={field.address.country}
@@ -59,7 +59,7 @@
                       >
                       </lightning-formatted-address>
                     </template>
-                    <template if:true={field.dateTimeValue}
+                    <template lwc:elseif={field.dateTimeValue}
                       ><lightning-formatted-date-time
                         day={field.dateTimeValue.day}
                         era={field.dateTimeValue.era}
@@ -76,7 +76,7 @@
                       >
                       </lightning-formatted-date-time>
                     </template>
-                    <template if:true={field.email}>
+                    <template lwc:elseif={field.email}>
                       <lightning-formatted-email
                         hide-icon={field.email.hideIcon}
                         label={field.email.label}
@@ -85,14 +85,14 @@
                       >
                       </lightning-formatted-email>
                     </template>
-                    <template if:true={field.location}>
+                    <template lwc:elseif={field.location}>
                       <lightning-formatted-location
                         latitude={field.location.latitude}
                         longitude={field.location.longitude}
                       >
                       </lightning-formatted-location>
                     </template>
-                    <template if:true={field.name}>
+                    <template lwc:elseif={field.name}>
                       <lightning-formatted-name
                         first-name={field.name.firstName}
                         format={field.name.format}
@@ -104,7 +104,7 @@
                       >
                       </lightning-formatted-name>
                     </template>
-                    <template if:true={field.numberValue}>
+                    <template lwc:elseif={field.numberValue}>
                       <lightning-formatted-number
                         currency-code={field.numberValue.currencyCode}
                         currency-display-as={field.numberValue.currencyDisplayAs}
@@ -118,7 +118,7 @@
                       >
                       </lightning-formatted-number>
                     </template>
-                    <template if:true={field.phoneNumber}>
+                    <template lwc:elseif={field.phoneNumber}>
                       <lightning-formatted-phone
                         disabled={field.phoneNumber.disabled}
                         tab-index={field.phoneNumber.tabIndex}
@@ -126,14 +126,14 @@
                       >
                       </lightning-formatted-phone>
                     </template>
-                    <template if:true={field.text}>
-                      <template if:true={field.text.isRich}>
+                    <template lwc:elseif={field.text}>
+                      <template lwc:if={field.text.isRich}>
                         <lightning-formatted-rich-text
                           linkify={field.text.linkify}
                           value={field.text.value}
                         ></lightning-formatted-rich-text>
                       </template>
-                      <template if:false={field.text.isRich}>
+                      <template lwc:else>
                         <lightning-formatted-text
                           linkify={field.text.linkify}
                           value={field.text.value}
@@ -141,11 +141,11 @@
                         </lightning-formatted-text>
                       </template>
                     </template>
-                    <template if:true={field.timeValue}>
+                    <template lwc:elseif={field.timeValue}>
                       <lightning-formatted-time value={field.timeValue.value}>
                       </lightning-formatted-time>
                     </template>
-                    <template if:true={field.url}>
+                    <template lwc:elseif={field.url}>
                       <lightning-formatted-url
                         label={field.url.label}
                         tab-index={field.url.tabIndex}
@@ -155,7 +155,7 @@
                       >
                       </lightning-formatted-url>
                     </template>
-                    <template if:true={field.isBoolean}>
+                    <template lwc:elseif={field.isBoolean}>
                       <div class="slds-checkbox">
                         <input type="checkbox" checked={field.booleanValue} />
                         <span class="slds-checkbox_faux"></span>

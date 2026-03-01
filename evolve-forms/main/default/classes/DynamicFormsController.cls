@@ -166,8 +166,7 @@ public with sharing class DynamicFormsController {
     String apiNamesCsv = '';
 
     try {
-      Schema.FieldSet fieldSet = Schema.getGlobalDescribe()
-        .get(objectApiName)
+      Schema.FieldSet fieldSet = getSObjectTypeByApiName
         .getDescribe()
         .fieldsets.getMap()
         .get(fieldSetApiName);
@@ -286,7 +285,7 @@ public with sharing class DynamicFormsController {
     DynamicFormsController.Field[] fieldList = new List<DynamicFormsController.Field>();
     Map<String, DynamicFormsController.Field> fieldsToQuery = new Map<String, DynamicFormsController.Field>();
 
-    SObjectType schemaType = Schema.getGlobalDescribe().get(sObjectType);
+    SObjectType schemaType = getSObjectTypeByApiName(sObjectType);
     Map<String, SObjectField> fieldMap = schemaType.getDescribe()
       .fields.getMap();
 
@@ -762,5 +761,9 @@ public with sharing class DynamicFormsController {
         LIMIT 1
       ];
     }
+  }
+  
+  private Schema.SObjectType getSObjectTypeByApiName(String sobjectApiName) {
+    return Schema.describeSObjects(new String[] {sobjectApiName}).get(0);
   }
 }

@@ -15,7 +15,7 @@
 -->
 
 <template>
-  <template if:true={shouldRenderSection}>
+  <template lwc:if={shouldRenderSection}>
     <div class={boundaryTheme}>
       <lightning-record-edit-form
         record-id={recordId}
@@ -27,7 +27,7 @@
           record-id={recordId}
           object-api-name={objectApiName}
         >
-          <template if:true={showSpinner}>
+          <template lwc:if={showSpinner}>
             <lightning-spinner size="small"></lightning-spinner>
           </template>
           <c-dynamic-forms-collapsible-section
@@ -42,16 +42,16 @@
                   key={element.key}
                   padding="horizontal-small"
                 >
-                  <template if:true={element.isSpace}>
+                  <template lwc:if={element.isSpace}>
                     <div class="slds-form__item slds-no-space blankSpace"></div>
                   </template>
-                  <template if:false={element.isSpace}>
-                    <template if:true={editMode}>
-                      <template if:true={element.labelOverride}>
+                  <template lwc:else>
+                    <template lwc:if={editMode}>
+                      <template lwc:if={element.labelOverride}>
                         <ul class="slds-form-element__label">
                           <li class="slds-item">{element.labelOverride}</li>
                         </ul>
-                        <template if:true={element.helpText}>
+                        <template lwc:if={element.helpText}>
                           <lightning-helptext
                             content={element.helpText}
                           ></lightning-helptext>
@@ -81,7 +81,7 @@
                         </div>
                       </template>
                     </template>
-                    <template if:false={editMode}>
+                    <template lwc:else>
                       <lightning-layout
                         vertical-align="center"
                         class="slds-border_bottom"
@@ -89,48 +89,25 @@
                         onmouseout={hoverOffField}
                         data-field-api-name={element.fieldApiName}
                       >
-                        <lightning-layout-item flexibility="auto">
-                          <template if:false={element.isReference}>
-                            <div
-                              class="slds-form-element slds-form-element_stacked"
-                            >
-                              <template if:true={element.labelOverride}>
-                                <ul class="slds-form-element__label">
-                                  <li class="slds-item">
-                                    {element.labelOverride}
-                                  </li>
-                                </ul>
-                                <template if:true={element.helpText}>
-                                  <lightning-helptext
-                                    content={element.helpText}
-                                  ></lightning-helptext>
-                                </template>
-                              </template>
-                              <lightning-output-field
-                                field-name={element.fieldApiName}
-                                variant={element.labelVariant}
-                              >
-                              </lightning-output-field>
-                            </div>
-                          </template>
+                      <lightning-layout-item flexibility="auto">
                           <!-- Mimic the look of an output field for reference values-->
                           <!-- This is due to page layout dependencies on lookup fields -->
                           <!-- See https://help.salesforce.com/s/articleView?id=000349125&type=1 -->
-                          <template if:true={element.isReference}>
+                          <template lwc:if={element.isReference}>
                             <div
                               class="slds-form-element slds-form-element_stacked"
                             >
                               <ul class="slds-form-element__label">
                                 <li class="slds-item">
-                                  <template if:true={element.labelOverride}>
+                                  <template lwc:if={element.labelOverride}>
                                     {element.labelOverride}
                                   </template>
-                                  <template if:false={element.labelOverride}>
+                                  <template lwc:else>
                                     {element.fieldLabel}
                                   </template>
                                 </li>
                               </ul>
-                              <template if:true={element.helpText}>
+                              <template lwc:if={element.helpText}>
                                 <lightning-helptext
                                   content={element.helpText}
                                 ></lightning-helptext>
@@ -138,7 +115,7 @@
                               <div
                                 class="slds-form-element__control lookupFieldValueContainer"
                               >
-                                <template if:true={element.referenceName}>
+                                <template lwc:if={element.referenceName}>
                                   <a
                                     class="slds-form-element__static lookupField"
                                     data-record-id={element.referenceValue}
@@ -152,7 +129,7 @@
                                     {element.referenceName}
 
                                     <template
-                                      if:true={element.showLookupCompactLayout}
+                                      lwc:if={element.showLookupCompactLayout}
                                     >
                                       <div
                                         onmouseover={hoverOverCompactLayout}
@@ -168,13 +145,36 @@
                                       </div>
                                     </template>
                                   </a>
-                                  <template if:true={element.isSystemField}>
+                                  <template lwc:if={element.isSystemField}>
                                     <span class="systemDateTime"
                                       >, {element.systemDateValue}</span
                                     >
                                   </template>
                                 </template>
                               </div>
+                            </div>
+                          </template>
+                          <template lwc:else>
+                            <div
+                              class="slds-form-element slds-form-element_stacked"
+                            >
+                              <template lwc:if={element.labelOverride}>
+                                <ul class="slds-form-element__label">
+                                  <li class="slds-item">
+                                    {element.labelOverride}
+                                  </li>
+                                </ul>
+                                <template lwc:if={element.helpText}>
+                                  <lightning-helptext
+                                    content={element.helpText}
+                                  ></lightning-helptext>
+                                </template>
+                              </template>
+                              <lightning-output-field
+                                field-name={element.fieldApiName}
+                                variant={element.labelVariant}
+                              >
+                              </lightning-output-field>
                             </div>
                           </template>
                         </lightning-layout-item>
@@ -209,7 +209,7 @@
         </lightning-record-view-form>
       </lightning-record-edit-form>
     </div>
-    <template if:true={error}>
+    <template lwc:if={error}>
       <p>error</p>
     </template>
   </template>

@@ -16,12 +16,12 @@
 
 <template>
   <!-- Implementation for bottom of page-pinned button -->
-  <template if:true={pinToBottom}>
+  <template lwc:if={pinToBottom}>
     <div class="bump"></div>
     <div
       class="slds-box slds-docked-form-footer slds-theme_default slds-align_absolute-center pinnedFooter"
     >
-      <template if:true={includeCancelButton}>
+      <template lwc:if={includeCancelButton}>
         <lightning-button
           variant="neutral"
           label="Cancel"
@@ -43,8 +43,8 @@
   </template>
 
   <!-- Implementation for standalone button -->
-  <template if:false={pinToBottom}>
-    <template if:true={includeCancelButton}>
+  <template lwc:else>
+    <template lwc:if={includeCancelButton}>
       <lightning-button
         variant="neutral"
         label="Cancel"
@@ -65,7 +65,7 @@
     </lightning-button>
   </template>
 
-  <template if:true={showModal}>
+  <template lwc:if={showModal}>
     <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
       <div class="slds-modal__container">
         <header class="slds-modal__header">
@@ -81,7 +81,7 @@
           class="slds-modal__content slds-p-around_medium"
           id="modal-content-id-1"
         >
-          <template if:true={currentWarnings}>
+          <template lwc:if={currentWarnings}>
             <div class="slds-align_absolute-center">
               <ul class="slds-list_dotted" tabindex="0">
                 <template for:each={currentWarnings} for:item="warning">
